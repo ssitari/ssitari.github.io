@@ -4,28 +4,168 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Eric Glass</title>
+<meta name="description" content="GIS/Metadata Librarian at Columbia University Libraries. Interactive cartography, exploratory spatial data analysis, and geospatial metadata.">
 <style>
-  :root { color-scheme: light dark; }
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #5c5c5c;
+    --rule: #e2e2e2;
+    --card: #fafafa;
+    --link: #0b5fa5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a;
+      --fg: #e8e8e8;
+      --muted: #a0a0a0;
+      --rule: #2c3038;
+      --card: #1c1f25;
+      --link: #7ab8f5;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    max-width: 40rem;
+    max-width: 46rem;
     margin: 4rem auto;
     padding: 0 1.5rem;
     line-height: 1.6;
+    background: var(--bg);
+    color: var(--fg);
   }
-  h1 { margin-bottom: 0.25rem; }
-  p.tagline { margin-top: 0; opacity: 0.75; }
-  nav a {
-    display: inline-block;
-    margin-right: 1rem;
+
+  a { color: var(--link); }
+
+  h1 { margin-bottom: 0.25rem; font-size: 2rem; }
+  p.tagline { margin-top: 0; color: var(--muted); }
+
+  nav {
+    margin-top: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  nav a { display: inline-block; margin-right: 1.25rem; }
+
+  h2 {
+    margin-top: 3rem;
+    margin-bottom: 0.25rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  h2 + p.section-note {
+    margin-top: 0;
+    margin-bottom: 1.75rem;
+    color: var(--muted);
+  }
+
+  .project {
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: var(--card);
+    padding: 1.25rem 1.4rem;
+    margin-bottom: 1.25rem;
+  }
+  .project h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.15rem;
+  }
+  .project h3 a { text-decoration: none; }
+  .project h3 a:hover { text-decoration: underline; }
+  .project p { margin: 0 0 0.75rem; }
+  .project .meta {
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin: 0;
+  }
+  .project .meta a { margin-right: 1rem; }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.9rem;
+    color: var(--muted);
   }
 </style>
 </head>
 <body>
-  <h1>Eric Glass</h1>
-  <p class="tagline">GIS/Metadata Librarian, Columbia University Libraries</p>
-  <nav>
-    <a href="/cv/">CV</a>
-  </nav>
+
+  <header>
+    <h1>Eric Glass</h1>
+    <p class="tagline">GIS/Metadata Librarian, Columbia University Libraries</p>
+    <nav>
+      <a href="/cv/">CV</a>
+      <a href="#projects">Projects</a>
+      <a href="https://github.com/ssitari">GitHub</a>
+      <a href="mailto:ecg2104@columbia.edu">Email</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2 id="projects">Projects</h2>
+    <p class="section-note">
+      A series of browser-based exploratory spatial data analysis tools, built with
+      <a href="https://d3js.org">D3.js</a>. Each takes the linked-view brushing model from
+      <a href="https://geodacenter.github.io/">GeoDa</a> — select features in one view and watch them
+      highlight in the others — and makes it work on the open web with no install and no build step.
+      All three are data-agnostic: point the config file at your own GeoJSON and the tool adapts.
+    </p>
+
+    <article class="project">
+      <h3><a href="https://ssitari.github.io/ChoroplethEDAUnivariate/">Choropleth EDA — Univariate</a></h3>
+      <p>
+        A classified choropleth linked to a histogram of the mapped variable. Lasso or rectangle-select
+        features on the map to see where they fall in the distribution, or brush a range in the histogram
+        to see where those features are. Quantile and equal-interval classification, 3–8 classes,
+        27 ColorBrewer palettes, and a summary statistics panel comparing the selection to the full population.
+      </p>
+      <p class="meta">
+        <a href="https://ssitari.github.io/ChoroplethEDAUnivariate/">Live demo</a>
+        <a href="https://github.com/ssitari/ChoroplethEDAUnivariate">Source</a>
+        Demo data: NYC census tracts, 2020
+      </p>
+    </article>
+
+    <article class="project">
+      <h3><a href="https://ssitari.github.io/ChoroplethEDABivariate/">Choropleth EDA — Bivariate</a></h3>
+      <p>
+        A 3×3 bivariate choropleth linked to a scatterplot with OLS regression. Selecting a subset draws a
+        second regression line for that subset, so you can compare its slope and correlation against the
+        full population directly. Six bivariate color schemes adapted from
+        <a href="https://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/">Joshua Stevens</a>,
+        with a floating color-matrix legend showing the class breaks.
+      </p>
+      <p class="meta">
+        <a href="https://ssitari.github.io/ChoroplethEDABivariate/">Live demo</a>
+        <a href="https://github.com/ssitari/ChoroplethEDABivariate">Source</a>
+        Demo data: NYC COVID-19 vaccination rates by MODZCTA, 2021
+      </p>
+    </article>
+
+    <article class="project">
+      <h3><a href="https://ssitari.github.io/ChoroplethEDATwomaps/">Choropleth EDA — Two Maps</a></h3>
+      <p>
+        Two stacked choropleths with independent variables, palettes, and legends, sharing synchronized zoom
+        and pan, plus a scatterplot of one against the other. Selection in any of the three views propagates
+        to the other two. The layout divider is draggable, so the balance between map and chart is yours to set.
+      </p>
+      <p class="meta">
+        <a href="https://ssitari.github.io/ChoroplethEDATwomaps/">Live demo</a>
+        <a href="https://github.com/ssitari/ChoroplethEDATwomaps">Source</a>
+        Demo data: NYC COVID-19 vaccination rates by MODZCTA, 2021
+      </p>
+    </article>
+  </main>
+
+  <footer>
+    <p>Built and hosted on GitHub Pages. Source for this site: <a href="https://github.com/ssitari/ssitari.github.io">ssitari.github.io</a></p>
+  </footer>
+
 </body>
 </html>
