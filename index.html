@@ -114,7 +114,7 @@
       <a href="https://d3js.org">D3.js</a>. Each takes the linked-view brushing model from
       <a href="https://geodacenter.github.io/">GeoDa</a> — select features in one view and watch them
       highlight in the others — and makes it work on the open web with no install and no build step.
-      All three are data-agnostic: point the config file at your own GeoJSON and the tool adapts.
+      Each is data-agnostic: point the config file at your own data and the tool adapts.
     </p>
 
     <article class="project">
@@ -159,6 +159,61 @@
         <a href="https://ssitari.github.io/ChoroplethEDATwomaps/">Live demo</a>
         <a href="https://github.com/ssitari/ChoroplethEDATwomaps">Source</a>
         Demo data: NYC COVID-19 vaccination rates by MODZCTA, 2021
+      </p>
+    </article>
+
+    <article class="project">
+      <h3><a href="https://ssitari.github.io/PictogramBivariateEDA/">Pictogram Bivariate EDA — US States</a></h3>
+      <p>
+        The bivariate tool above, with the scatterplot's dots replaced by the states themselves. Each mark is
+        the state's own outline, normalized so every silhouette encloses the same area and anchored on its
+        area-weighted centroid — so a reader can pick Texas or Michigan out of the scatter by shape alone,
+        without a tooltip or a legend lookup. Map and marks are cut from one pre-projected topology, which
+        keeps a state's silhouette geometrically identical to its shape on the map. The trick only works for
+        geographies whose outlines a reader already carries in their head, which is a real constraint and part
+        of the point.
+      </p>
+      <p class="meta">
+        <a href="https://ssitari.github.io/PictogramBivariateEDA/">Live demo</a>
+        <a href="https://github.com/ssitari/PictogramBivariateEDA">Source</a>
+        Data: presidential vote share, 1976–2024
+      </p>
+    </article>
+
+    <h2 id="distributions">Distribution charts</h2>
+    <p class="section-note">
+      Unit charts, where one mark is one thing rather than an aggregate — the reader can count the
+      population instead of trusting a bar. Both are built from generator scripts that fetch their
+      sources at build time, so the tables can be rebuilt from scratch by anyone.
+    </p>
+
+    <article class="project">
+      <h3><a href="https://ssitari.github.io/PresidentAgeHistogram/">Presidential Ages in Office</a></h3>
+      <p>
+        A Wilkinson dot plot of how old presidents actually were while holding the office. One dot is one
+        president at one integer age, and each dot is filled to the share of that year genuinely served — so
+        William Henry Harrison's whole presidency is a single sliver at 68, and nobody is dropped by sampling.
+        Colored by party, with the distribution running from Theodore Roosevelt at 42 to Joe Biden at 82.
+      </p>
+      <p class="meta">
+        <a href="https://ssitari.github.io/PresidentAgeHistogram/">Live demo</a>
+        <a href="https://github.com/ssitari/PresidentAgeHistogram">Source</a>
+        Data: congress-legislators and Wikidata
+      </p>
+    </article>
+
+    <article class="project">
+      <h3><a href="https://ssitari.github.io/SenateAgeHistogram/">Senate Ages by Congress</a></h3>
+      <p>
+        The age of every sitting senator on the day each Congress convened, across all 119 Congresses from
+        1789 to 2025 — 9,299 seats, median age 55. Not the incoming class but the whole chamber, so a senator
+        serving thirty years contributes fifteen observations at fifteen different ages. Drag the timeline
+        beneath the chart to brush an era and compare its distribution against the full series.
+      </p>
+      <p class="meta">
+        <a href="https://ssitari.github.io/SenateAgeHistogram/">Live demo</a>
+        <a href="https://github.com/ssitari/SenateAgeHistogram">Source</a>
+        Data: <a href="https://github.com/unitedstates/congress-legislators">congress-legislators</a>
       </p>
     </article>
 
