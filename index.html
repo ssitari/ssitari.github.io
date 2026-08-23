@@ -14,6 +14,7 @@
     --rule: #e2e2e2;
     --card: #fafafa;
     --link: #0b5fa5;
+    --tag-bg: #ececec;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -23,6 +24,7 @@
       --rule: #2c3038;
       --card: #1c1f25;
       --link: #7ab8f5;
+      --tag-bg: #2c3038;
     }
   }
 
@@ -68,22 +70,36 @@
     border: 1px solid var(--rule);
     border-radius: 8px;
     background: var(--card);
-    padding: 1.25rem 1.4rem;
-    margin-bottom: 1.25rem;
+    padding: 1.15rem 1.35rem;
+    margin-bottom: 1rem;
   }
   .project h3 {
     margin: 0 0 0.4rem;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
   .project h3 a { text-decoration: none; }
   .project h3 a:hover { text-decoration: underline; }
-  .project p { margin: 0 0 0.75rem; }
+  .project p { margin: 0 0 0.7rem; }
   .project .meta {
     font-size: 0.875rem;
     color: var(--muted);
     margin: 0;
   }
   .project .meta a { margin-right: 1rem; }
+
+  .wip {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: var(--tag-bg);
+    color: var(--muted);
+    border-radius: 3px;
+    padding: 0.1rem 0.4rem;
+    vertical-align: 0.15em;
+    margin-left: 0.4rem;
+  }
 
   footer {
     margin-top: 4rem;
@@ -101,29 +117,30 @@
     <p class="tagline">GIS/Metadata Librarian, Columbia University Libraries</p>
     <nav>
       <a href="/cv/">CV</a>
-      <a href="#projects">Projects</a>
+      <a href="#eda">Projects</a>
       <a href="https://github.com/ssitari">GitHub</a>
       <a href="mailto:ecg2104@columbia.edu">Email</a>
     </nav>
   </header>
 
   <main>
-    <h2 id="projects">Interactive cartography</h2>
+
+    <h2 id="eda">Exploratory spatial data analysis</h2>
     <p class="section-note">
-      A series of browser-based exploratory spatial data analysis tools, built with
-      <a href="https://d3js.org">D3.js</a>. Each takes the linked-view brushing model from
-      <a href="https://geodacenter.github.io/">GeoDa</a> — select features in one view and watch them
-      highlight in the others — and makes it work on the open web with no install and no build step.
-      Each is data-agnostic: point the config file at your own data and the tool adapts.
+      A series of browser-based linked-view tools built with <a href="https://d3js.org">D3.js</a>. Each
+      takes the brushing model from <a href="https://geodacenter.github.io/">GeoDa</a> &mdash; select features
+      in one view and watch them highlight in the others &mdash; and makes it work on the open web with no
+      install and no build step. All are data-agnostic: point the config file at your own GeoJSON and the
+      tool adapts.
     </p>
 
     <article class="project">
-      <h3><a href="https://ssitari.github.io/ChoroplethEDAUnivariate/">Choropleth EDA — Univariate</a></h3>
+      <h3><a href="https://ssitari.github.io/ChoroplethEDAUnivariate/">Choropleth EDA &mdash; Univariate</a></h3>
       <p>
-        A classified choropleth linked to a histogram of the mapped variable. Lasso or rectangle-select
-        features on the map to see where they fall in the distribution, or brush a range in the histogram
-        to see where those features are. Quantile and equal-interval classification, 3–8 classes,
-        27 ColorBrewer palettes, and a summary statistics panel comparing the selection to the full population.
+        A classified choropleth linked to a histogram of the mapped variable. Select features on the map to
+        see where they fall in the distribution, or brush a range in the histogram to see where those
+        features are. Quantile and equal-interval classification, 3&ndash;8 classes, 27 ColorBrewer palettes,
+        and a summary statistics panel comparing selection against full population.
       </p>
       <p class="meta">
         <a href="https://ssitari.github.io/ChoroplethEDAUnivariate/">Live demo</a>
@@ -133,13 +150,12 @@
     </article>
 
     <article class="project">
-      <h3><a href="https://ssitari.github.io/ChoroplethEDABivariate/">Choropleth EDA — Bivariate</a></h3>
+      <h3><a href="https://ssitari.github.io/ChoroplethEDABivariate/">Choropleth EDA &mdash; Bivariate</a></h3>
       <p>
-        A 3×3 bivariate choropleth linked to a scatterplot with OLS regression. Selecting a subset draws a
-        second regression line for that subset, so you can compare its slope and correlation against the
-        full population directly. Six bivariate color schemes adapted from
-        <a href="https://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/">Joshua Stevens</a>,
-        with a floating color-matrix legend showing the class breaks.
+        A 3&times;3 bivariate choropleth linked to a scatterplot with OLS regression. Selecting a subset draws
+        a second regression line for that subset, so its slope and correlation can be read directly against
+        the full population. Six bivariate color schemes adapted from
+        <a href="https://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/">Joshua Stevens</a>.
       </p>
       <p class="meta">
         <a href="https://ssitari.github.io/ChoroplethEDABivariate/">Live demo</a>
@@ -149,11 +165,11 @@
     </article>
 
     <article class="project">
-      <h3><a href="https://ssitari.github.io/ChoroplethEDATwomaps/">Choropleth EDA — Two Maps</a></h3>
+      <h3><a href="https://ssitari.github.io/ChoroplethEDATwomaps/">Choropleth EDA &mdash; Two Maps</a></h3>
       <p>
         Two stacked choropleths with independent variables, palettes, and legends, sharing synchronized zoom
         and pan, plus a scatterplot of one against the other. Selection in any of the three views propagates
-        to the other two. The layout divider is draggable, so the balance between map and chart is yours to set.
+        to the other two.
       </p>
       <p class="meta">
         <a href="https://ssitari.github.io/ChoroplethEDATwomaps/">Live demo</a>
@@ -163,74 +179,113 @@
     </article>
 
     <article class="project">
-      <h3><a href="https://ssitari.github.io/PictogramBivariateEDA/">Pictogram Bivariate EDA — US States</a></h3>
+      <h3><a href="https://ssitari.github.io/PictogramBivariateEDA/">Pictogram Bivariate EDA</a></h3>
       <p>
-        The bivariate tool above, with the scatterplot's dots replaced by the states themselves. Each mark is
-        the state's own outline, normalized so every silhouette encloses the same area and anchored on its
-        area-weighted centroid — so a reader can pick Texas or Michigan out of the scatter by shape alone,
-        without a tooltip or a legend lookup. Map and marks are cut from one pre-projected topology, which
-        keeps a state's silhouette geometrically identical to its shape on the map. The trick only works for
-        geographies whose outlines a reader already carries in their head, which is a real constraint and part
-        of the point.
+        A bivariate choropleth linked to a brushable scatterplot in which every scatter mark is the silhouette
+        of the state it represents, normalized so each encloses the same area. The map shows where, the
+        scatterplot shows how much, and the mark itself shows which &mdash; so Texas or Michigan is
+        identifiable in the scatter without a tooltip or a legend lookup. Deliberately narrow: it only works
+        for geographies whose outlines a reader already carries in their head.
       </p>
       <p class="meta">
         <a href="https://ssitari.github.io/PictogramBivariateEDA/">Live demo</a>
         <a href="https://github.com/ssitari/PictogramBivariateEDA">Source</a>
-        Data: presidential vote share, 1976–2024
+        US states
       </p>
     </article>
 
-    <h2 id="distributions">Distribution charts</h2>
+    <h2 id="cartography">Cartographic experiments</h2>
     <p class="section-note">
-      Unit charts, where one mark is one thing rather than an aggregate — the reader can count the
-      population instead of trusting a bar. Both are built from generator scripts that fetch their
-      sources at build time, so the tables can be rebuilt from scratch by anyone.
+      Maps that argue something rather than serving as general-purpose tools.
     </p>
 
     <article class="project">
-      <h3><a href="https://ssitari.github.io/PresidentAgeHistogram/">Presidential Ages in Office</a></h3>
+      <h3><a href="https://ssitari.github.io/SilhouetteDistricts/">Silhouette Districts</a></h3>
       <p>
-        A Wilkinson dot plot of how old presidents actually were while holding the office. One dot is one
-        president at one integer age, and each dot is filled to the share of that year genuinely served — so
-        William Henry Harrison's whole presidency is a single sliver at 68, and nobody is dropped by sampling.
-        Colored by party, with the distribution running from Theodore Roosevelt at 42 to Joe Biden at 82.
+        All 435 congressional districts redrawn so every district is the shape of its own state &mdash;
+        district 1 a solid scaled copy, districts 2 through <em>n</em> nested rings around it, each holding an
+        equal share of the state's 2020 census population. A geometric thought experiment, not a redistricting
+        proposal. What it actually renders is a radial population-density profile: ring width is inverse
+        density, so New York's outermost districts come out roughly one-ninetieth the width of its innermost.
       </p>
       <p class="meta">
-        <a href="https://ssitari.github.io/PresidentAgeHistogram/">Live demo</a>
-        <a href="https://github.com/ssitari/PresidentAgeHistogram">Source</a>
-        Data: congress-legislators and Wikidata
+        <a href="https://ssitari.github.io/SilhouetteDistricts/">Live demo</a>
+        <a href="https://github.com/ssitari/SilhouetteDistricts">Source</a>
+        2020 census blocks (PL 94-171)
+      </p>
+    </article>
+
+    <article class="project">
+      <h3><a href="https://ssitari.github.io/LinkedNetworkGraphChoroplethMap/">Linked Network Graph + Choropleth Map</a><span class="wip">Work in progress</span></h3>
+      <p>
+        A dual-panel visualization pairing a force-directed network graph with a choropleth of the same
+        geography. Selecting a node re-colors the map by that node's edge weights, so the abstract topology
+        of the graph and the real geography it describes can be read against each other. The test case is
+        2025 NYC Citi Bike trips aggregated to Community District Tabulation Areas.
+      </p>
+      <p class="meta">
+        <a href="https://ssitari.github.io/LinkedNetworkGraphChoroplethMap/">Live demo</a>
+        <a href="https://github.com/ssitari/LinkedNetworkGraphChoroplethMap">Source</a>
+        Citi Bike system data, 2025
+      </p>
+    </article>
+
+    <h2 id="dataviz">Data visualization</h2>
+    <p class="section-note">
+      The same D3 toolkit applied to non-spatial data.
+    </p>
+
+    <article class="project">
+      <h3><a href="https://ssitari.github.io/NCAAFSRSTimeline/">NCAAF SRS Timeline</a></h3>
+      <p>
+        An interactive timeline of college football team quality from 1869 to 2025, measured by Simple Rating
+        System score, with the data pipeline behind it. SRS rather than Elo because it is centered on each
+        season's mean by construction, which makes it comparable across eras without extra normalization.
+        The design owes an obvious debt to FiveThirtyEight's now-defunct <em>Complete History of the NBA</em>.
+      </p>
+      <p class="meta">
+        <a href="https://ssitari.github.io/NCAAFSRSTimeline/">Live demo</a>
+        <a href="https://github.com/ssitari/NCAAFSRSTimeline">Source</a>
+        Sports-Reference/CFB, fetched via the Internet Archive
       </p>
     </article>
 
     <article class="project">
       <h3><a href="https://ssitari.github.io/SenateAgeHistogram/">Senate Ages by Congress</a></h3>
       <p>
-        The age of every sitting senator on the day each Congress convened, across all 119 Congresses from
-        1789 to 2025 — 9,299 seats, median age 55. Not the incoming class but the whole chamber, so a senator
-        serving thirty years contributes fifteen observations at fifteen different ages. Drag the timeline
-        beneath the chart to brush an era and compare its distribution against the full series.
+        The age of every sitting senator on the day each Congress convened, 1789&ndash;2025 &mdash; the whole
+        chamber, not the incoming class, so a senator serving thirty years contributes fifteen observations at
+        fifteen different ages. Two layers share one count axis: a grey silhouette showing how the seats would
+        be distributed if the chamber were ordinary, and party-colored dots showing what it actually looked
+        like.
       </p>
       <p class="meta">
         <a href="https://ssitari.github.io/SenateAgeHistogram/">Live demo</a>
         <a href="https://github.com/ssitari/SenateAgeHistogram">Source</a>
-        Data: <a href="https://github.com/unitedstates/congress-legislators">congress-legislators</a>
       </p>
     </article>
 
-    <h2 id="networks">Network visualization</h2>
-    <p class="section-note">
-      Applying the same D3 toolkit to non-spatial relational data.
-    </p>
+    <article class="project">
+      <h3><a href="https://ssitari.github.io/PresidentAgeHistogram/">Presidential Ages in Office</a></h3>
+      <p>
+        A Wilkinson dot plot of how old presidents were while they held the office. One dot is one president at
+        one integer age, with no sampling, so every president appears &mdash; including William Henry Harrison,
+        whose entire presidency is a single dot at 68. Within a column dots stack chronologically, so reading
+        bottom to top is reading forward in time.
+      </p>
+      <p class="meta">
+        <a href="https://ssitari.github.io/PresidentAgeHistogram/">Live demo</a>
+        <a href="https://github.com/ssitari/PresidentAgeHistogram">Source</a>
+      </p>
+    </article>
 
     <article class="project">
-      <h3><a href="https://ssitari.github.io/GuardianBookNetwork/">Guardian Top 100 Novels — Vote Network</a></h3>
+      <h3><a href="https://ssitari.github.io/GuardianBookNetwork/">Guardian Top 100 Novels &mdash; Vote Network</a></h3>
       <p>
-        A force-directed network of the Guardian's 2026 best-novels poll, with a node for every novel and
-        every voter and an edge for every vote cast. Edge length is weighted by ballot position, so critics
-        with orthodox taste pull toward the center while idiosyncratic ballots and niche novels drift to the
-        edges — the layout itself becomes the argument. Dashed edges connect novels that appeared together on
-        eight or more ballots, surfacing the clusters critics tend to group. Filter by author, novel, or voter;
-        labels fade in and out by zoom level and vote count so the graph stays readable at any scale.
+        A force-directed network of the Guardian's 2026 best-novels poll, with a node for every novel and every
+        voter and an edge for every vote cast. Edge length is weighted by ballot position, so critics with
+        orthodox taste pull toward the center while idiosyncratic ballots and niche novels drift to the edges.
+        Dashed edges connect novels appearing together on eight or more ballots.
       </p>
       <p class="meta">
         <a href="https://ssitari.github.io/GuardianBookNetwork/">Live demo</a>
@@ -238,6 +293,84 @@
         Data compiled by <a href="https://mpaldridge.github.io/blog/guardian-novels.html">Matthew Aldridge</a>
       </p>
     </article>
+
+    <h2 id="teaching">Teaching and reference</h2>
+    <p class="section-note">
+      Instructional material written for researchers, students, and staff at Columbia and beyond.
+    </p>
+
+    <article class="project">
+      <h3><a href="https://ssitari.github.io/CensusGeographies/">Census Geographies &mdash; A Guided Tour</a></h3>
+      <p>
+        An interactive walk through fifteen geographies used for the Decennial Census and the ACS, built for
+        the <a href="https://guides.library.columbia.edu/census">Columbia University Libraries census research
+        guide</a> and aimed at complete novices. Every step has its own URL fragment so a guide can link
+        straight to a single geography, hovering any unit decomposes its GEOID into labelled runs, and each
+        step states in words what it does and does not nest inside &mdash; because the census hierarchy is not
+        a clean tree and most introductions hide that. NYC-centric by design.
+      </p>
+      <p class="meta">
+        <a href="https://ssitari.github.io/CensusGeographies/">Live demo</a>
+        <a href="https://github.com/ssitari/CensusGeographies">Source</a>
+        2020 vintage geometry
+      </p>
+    </article>
+
+    <article class="project">
+      <h3><a href="https://ssitari.github.io/IntroOpenGISWorkbook/">Introduction to GIS Using Open Source Software</a><span class="wip">Work in progress</span></h3>
+      <p>
+        A self-directed introductory workshop text for learning GIS with open source tools, focused on QGIS
+        3.44 and using New York City as its geographic context. Written for researchers, graduate students,
+        and faculty who want to bring spatial methods into their work, assuming no prior GIS experience. A
+        first complete version is expected in September 2026.
+      </p>
+      <p class="meta">
+        <a href="https://ssitari.github.io/IntroOpenGISWorkbook/">Read online</a>
+        <a href="https://github.com/ssitari/IntroOpenGISWorkbook">Source</a>
+      </p>
+    </article>
+
+    <article class="project">
+      <h3><a href="https://ssitari.github.io/GISWorkshops/">GIS Workshops</a></h3>
+      <p>
+        Materials supporting GIS trainings for Research Data Services at Columbia. Five QGIS exercises covering
+        census joins and dissolves, raster site suitability modeling, spatial joins of 311 complaint data, and
+        choropleth layout for print &mdash; each self-contained, with its screenshots and datasets alongside
+        the text.
+      </p>
+      <p class="meta">
+        <a href="https://ssitari.github.io/GISWorkshops/">Live site</a>
+        <a href="https://github.com/ssitari/GISWorkshops">Source</a>
+      </p>
+    </article>
+
+    <article class="project">
+      <h3><a href="https://github.com/ssitari/MapClub">Map Club</a></h3>
+      <p>
+        Session materials from Columbia University Libraries' Map Club.
+      </p>
+      <p class="meta">
+        <a href="https://github.com/ssitari/MapClub">Source</a>
+      </p>
+    </article>
+
+    <h2 id="metadata">Geospatial metadata</h2>
+    <p class="section-note">
+      Records maintained for the Libraries' geospatial data collections.
+    </p>
+
+    <article class="project">
+      <h3><a href="https://github.com/ssitari/GeodataColumbiaMetadata">Geodata Columbia Metadata</a></h3>
+      <p>
+        FGDC and ISO metadata records for the Columbia University Libraries geospatial data collections,
+        maintained for ingest into the
+        <a href="https://geodata.library.columbia.edu/">Columbia GeoData catalog</a>.
+      </p>
+      <p class="meta">
+        <a href="https://github.com/ssitari/GeodataColumbiaMetadata">Source</a>
+      </p>
+    </article>
+
   </main>
 
   <footer>
